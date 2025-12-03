@@ -20,7 +20,7 @@ sudo chown $USER:$USER /var/www/catalog
 cd /var/www/catalog
 
 # Git orqali (tavsiya)
-git clone https://github.com/your-username/your-repo.git .
+git clone https://github.com/ismoilov299/organic_bot.git .
 
 # yoki rsync/scp orqali fayllarni ko'chiring
 ```
@@ -41,7 +41,7 @@ pip install -r requirements-prod.txt
 # Environment o'zgaruvchilarini sozlash
 export DJANGO_SETTINGS_MODULE=config.settings_prod
 export SECRET_KEY="your-super-secret-production-key"
-export ALLOWED_HOSTS="your-domain.com,www.your-domain.com"
+export ALLOWED_HOSTS="organikbuyurtma.uz,www.organikbuyurtma.uz"
 
 # Database migrations
 python manage.py migrate
@@ -68,7 +68,7 @@ sudo apt install -y nodejs
 
 # .env.production sozlash
 nano .env.production
-# VITE_API_BASE=https://your-domain.com yozing
+# VITE_API_BASE=https://organikbuyurtma.uz yozing
 
 # Dependencies va build
 npm install
@@ -122,7 +122,7 @@ sudo systemctl restart nginx
 sudo apt install -y certbot python3-certbot-nginx
 
 # SSL sertifikat olish
-sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+sudo certbot --nginx -d organikbuyurtma.uz -d www.organikbuyurtma.uz
 
 # Avtomatik yangilash test
 sudo certbot renew --dry-run
