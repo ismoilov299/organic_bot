@@ -10,14 +10,14 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y python3-pip python3-venv nginx git
 
 # Ish papkasi yaratish
-sudo mkdir -p /var/www/catalog
-sudo chown $USER:$USER /var/www/catalog
+sudo mkdir -p /var/www/organic_bot
+sudo chown $USER:$USER /var/www/organic_bot
 ```
 
 ## 2. Loyihani serverga yuklash
 
 ```bash
-cd /var/www/catalog
+cd /var/www/organic_bot
 
 # Git orqali (tavsiya)
 git clone https://github.com/ismoilov299/organic_bot.git .
@@ -28,7 +28,7 @@ git clone https://github.com/ismoilov299/organic_bot.git .
 ## 3. Backend sozlash
 
 ```bash
-cd /var/www/catalog/backend
+cd /var/www/organic_bot/backend
 
 # Virtual environment
 python3 -m venv venv
@@ -60,7 +60,7 @@ sudo chmod -R 755 media/
 ## 4. Frontend build qilish
 
 ```bash
-cd /var/www/catalog/frontend
+cd /var/www/organic_bot/frontend
 
 # Node.js o'rnatish (agar yo'q bo'lsa)
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
@@ -74,14 +74,14 @@ nano .env.production
 npm install
 npm run build
 
-# Build fayllar /var/www/catalog/frontend/dist da paydo bo'ladi
+# Build fayllar /var/www/organic_bot/frontend/dist da paydo bo'ladi
 ```
 
 ## 5. Systemd service sozlash
 
 ```bash
 # Service faylini ko'chirish
-sudo cp /var/www/catalog/deploy/catalog-backend.service /etc/systemd/system/
+sudo cp /var/www/organic_bot/deploy/catalog-backend.service /etc/systemd/system/
 
 # Service faylini tahrirlash (SECRET_KEY, ALLOWED_HOSTS)
 sudo nano /etc/systemd/system/catalog-backend.service
@@ -99,7 +99,7 @@ sudo systemctl status catalog-backend
 
 ```bash
 # Nginx config ko'chirish
-sudo cp /var/www/catalog/deploy/nginx-catalog.conf /etc/nginx/sites-available/catalog
+sudo cp /var/www/organic_bot/deploy/nginx-catalog.conf /etc/nginx/sites-available/catalog
 
 # Config tahrirlash (server_name)
 sudo nano /etc/nginx/sites-available/catalog
@@ -140,7 +140,7 @@ sudo ufw enable
 
 ```bash
 # Git orqali yangi kod olish
-cd /var/www/catalog
+cd /var/www/organic_bot
 git pull
 
 # Backend yangilash
@@ -173,13 +173,13 @@ sudo tail -f /var/log/nginx/access.log
 
 ### Ruxsatlar muammosi (media/static)
 ```bash
-sudo chown -R www-data:www-data /var/www/catalog/backend/media/
-sudo chown -R www-data:www-data /var/www/catalog/backend/staticfiles/
+sudo chown -R www-data:www-data /var/www/organic_bot/backend/media/
+sudo chown -R www-data:www-data /var/www/organic_bot/backend/staticfiles/
 ```
 
 ### Database backup
 ```bash
-cd /var/www/catalog/backend
+cd /var/www/organic_bot/backend
 source venv/bin/activate
 python manage.py dumpdata > backup_$(date +%Y%m%d).json
 ```

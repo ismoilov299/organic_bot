@@ -6,11 +6,11 @@ After=network.target
 Type=notify
 User=www-data
 Group=www-data
-WorkingDirectory=/var/www/catalog/backend
+WorkingDirectory=/var/www/organic_bot/backend
 Environment="DJANGO_SETTINGS_MODULE=config.settings_prod"
 Environment="SECRET_KEY=your-production-secret-key-here"
 Environment="ALLOWED_HOSTS=organikbuyurtma.uz,www.organikbuyurtma.uz"
-ExecStart=/var/www/catalog/backend/venv/bin/gunicorn config.wsgi:application -c gunicorn.conf.py
+ExecStart=/var/www/organic_bot/backend/venv/bin/gunicorn config.wsgi:application -c gunicorn.conf.py
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
 TimeoutStopSec=5
