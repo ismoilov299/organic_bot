@@ -41,7 +41,7 @@ pip install -r requirements-prod.txt
 # Environment o'zgaruvchilarini sozlash
 export DJANGO_SETTINGS_MODULE=config.settings_prod
 export SECRET_KEY="your-super-secret-production-key"
-export ALLOWED_HOSTS="organikbuyurtma.uz,www.organikbuyurtma.uz"
+export ALLOWED_HOSTS="organikbuyurtma.uz,www.organikbuyurtma.uz,45.138.159.52"
 
 # Database migrations
 python manage.py migrate

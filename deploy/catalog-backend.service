@@ -9,7 +9,7 @@ Group=www-data
 WorkingDirectory=/var/www/organic_bot/backend
 Environment="DJANGO_SETTINGS_MODULE=config.settings_prod"
 Environment="SECRET_KEY=your-production-secret-key-here"
-Environment="ALLOWED_HOSTS=organikbuyurtma.uz,www.organikbuyurtma.uz"
+Environment="ALLOWED_HOSTS=organikbuyurtma.uz,www.organikbuyurtma.uz,45.138.159.52"
 ExecStart=/var/www/organic_bot/backend/venv/bin/gunicorn config.wsgi:application -c gunicorn.conf.py
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
