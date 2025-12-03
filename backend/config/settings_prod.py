@@ -28,8 +28,10 @@ if os.environ.get('DATABASE_URL'):
     DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # CORS for production
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')
-if not CORS_ALLOWED_ORIGINS[0]:
+cors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')
+if cors_origins:
+    CORS_ALLOWED_ORIGINS = cors_origins.split(',')
+else:
     CORS_ALLOW_ALL_ORIGINS = True
 
 # Media files
