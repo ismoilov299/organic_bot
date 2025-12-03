@@ -83,8 +83,18 @@ npm run build
 # Service faylini ko'chirish
 sudo cp /var/www/organic_bot/deploy/catalog-backend.service /etc/systemd/system/
 
-# Service faylini tahrirlash (SECRET_KEY, ALLOWED_HOSTS)
+# MUHIM: Service faylini tahrirlash
 sudo nano /etc/systemd/system/catalog-backend.service
+
+# Quyidagi qatorni toping va SECRET_KEY ni o'zgartiring:
+# Environment="SECRET_KEY=your-production-secret-key-here"
+# 
+# Yangi SECRET_KEY generatsiya qilish:
+# cd /var/www/organic_bot/backend
+# python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+# 
+# Masalan:
+# Environment="SECRET_KEY=x*_ma*$ixo+9r7&a4hxu0p9ltu0@+w#=j%(y*q*w0i*qn@jo9b"
 
 # Service yoqish
 sudo systemctl daemon-reload
@@ -93,6 +103,9 @@ sudo systemctl start catalog-backend
 
 # Statusni tekshirish
 sudo systemctl status catalog-backend
+
+# Xato bo'lsa loglarni ko'rish:
+sudo journalctl -u catalog-backend -n 50 --no-pager
 ```
 
 ## 6. Nginx sozlash
