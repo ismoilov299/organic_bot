@@ -19,11 +19,13 @@ SECURE_HSTS_SECONDS = int(os.environ.get('SECURE_HSTS_SECONDS', '0'))
 SECURE_HSTS_INCLUDE_SUBDOMAINS = os.environ.get('SECURE_HSTS_INCLUDE_SUBDOMAINS', 'False') == 'True'
 SECURE_HSTS_PRELOAD = os.environ.get('SECURE_HSTS_PRELOAD', 'False') == 'True'
 
-# CSRF trusted origins for HTTP (remove after HTTPS)
+# CSRF trusted origins (HTTP for IP, HTTPS for domain via Cloudflare)
 CSRF_TRUSTED_ORIGINS = [
     'http://45.138.159.52',
     'http://organikbuyurtma.uz',
     'http://www.organikbuyurtma.uz',
+    'https://organikbuyurtma.uz',
+    'https://www.organikbuyurtma.uz',
 ]
 
 # Static files
