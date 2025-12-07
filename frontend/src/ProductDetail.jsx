@@ -30,7 +30,7 @@ export default function ProductDetail() {
   if (loading) {
     return (
       <div style={{ fontFamily: 'system-ui, Arial, sans-serif', padding: 16, textAlign: 'center' }}>
-        Загрузка...
+        Yuklanmoqda...
       </div>
     )
   }
@@ -38,8 +38,8 @@ export default function ProductDetail() {
   if (error || !product) {
     return (
       <div style={{ fontFamily: 'system-ui, Arial, sans-serif', padding: 16 }}>
-        <button onClick={() => navigate('/')} style={backButtonStyle}>← Назад</button>
-        <p style={{ color: 'crimson', textAlign: 'center', marginTop: 32 }}>{error || 'Товар не найден'}</p>
+        <button onClick={() => navigate('/')} style={backButtonStyle}>← Orqaga</button>
+        <p style={{ color: 'crimson', textAlign: 'center', marginTop: 32 }}>{error || 'Mahsulot topilmadi'}</p>
       </div>
     )
   }
@@ -50,7 +50,7 @@ export default function ProductDetail() {
     <div style={{ fontFamily: 'system-ui, Arial, sans-serif', background: '#f5f5f5', minHeight: '100vh', paddingBottom: 32 }}>
       <div style={{ background: '#fff', padding: '16px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
-          <button onClick={() => navigate('/')} style={backButtonStyle}>← Назад</button>
+          <button onClick={() => navigate('/')} style={backButtonStyle}>← Orqaga</button>
         </div>
       </div>
 
@@ -85,7 +85,7 @@ export default function ProductDetail() {
             
             {product.telegram_order_link && (
               <a href={product.telegram_order_link} target="_blank" rel="noreferrer" style={buyButtonStyle}>
-                Заказать
+                Buyurtma berish
               </a>
             )}
           </div>

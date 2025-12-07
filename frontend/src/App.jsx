@@ -62,7 +62,7 @@ function HomePage() {
           <div style={{ position: 'relative' }}>
             <input
               type="text"
-              placeholder="Искать товары"
+              placeholder="Mahsulotlarni qidirish"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -87,7 +87,7 @@ function HomePage() {
           onSelect={onSelectCategory}
         />
 
-        {loading && <p style={{ textAlign: 'center' }}>Загрузка...</p>}
+        {loading && <p style={{ textAlign: 'center' }}>Yuklanmoqda...</p>}
         {error && <p style={{ color: 'crimson', textAlign: 'center' }}>{error}</p>}
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
@@ -103,7 +103,7 @@ function HomePage() {
 function CategoryFilter({ categories, activeCategory, onSelect }) {
   return (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16, overflowX: 'auto', paddingBottom: 8 }}>
-      <button onClick={() => onSelect('')} style={btnStyle(activeCategory === '')}>Все</button>
+      <button onClick={() => onSelect('')} style={btnStyle(activeCategory === '')}>Barchasi</button>
       {categories.map(c => (
         <button key={c.id} onClick={() => onSelect(c.id)} style={btnStyle(activeCategory === c.id)}>
           {c.name}
@@ -173,7 +173,7 @@ function ProductCard({ product }) {
       <div style={{ padding: '0 12px 12px' }}>
         {product.telegram_order_link && (
           <a href={product.telegram_order_link} target="_blank" rel="noreferrer" style={buyStyle}>
-            Заказать
+            Buyurtma berish
           </a>
         )}
       </div>
