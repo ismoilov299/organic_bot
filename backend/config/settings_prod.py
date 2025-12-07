@@ -32,10 +32,17 @@ CSRF_TRUSTED_ORIGINS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-# Database (optional PostgreSQL)
-if os.environ.get('DATABASE_URL'):
-    import dj_database_url
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# Database - PostgreSQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'organic_catalog'),
+        'USER': os.environ.get('DB_USER', 'organic_user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'Org@n1c_C@t@log_2025!'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
+}
 
 # CORS for production
 cors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')
