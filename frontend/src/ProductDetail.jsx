@@ -30,7 +30,7 @@ export default function ProductDetail() {
   if (loading) {
     return (
       <div style={{ fontFamily: 'system-ui, Arial, sans-serif', padding: 16, textAlign: 'center' }}>
-        Yuklanmoqda...
+        Загрузка...
       </div>
     )
   }
@@ -38,8 +38,8 @@ export default function ProductDetail() {
   if (error || !product) {
     return (
       <div style={{ fontFamily: 'system-ui, Arial, sans-serif', padding: 16 }}>
-        <button onClick={() => navigate('/')} style={backButtonStyle}>← Orqaga</button>
-        <p style={{ color: 'crimson', textAlign: 'center', marginTop: 32 }}>{error || 'Mahsulot topilmadi'}</p>
+        <button onClick={() => navigate('/')} style={backButtonStyle}>← Назад</button>
+        <p style={{ color: 'crimson', textAlign: 'center', marginTop: 32 }}>{error || 'Товар не найден'}</p>
       </div>
     )
   }
@@ -50,7 +50,7 @@ export default function ProductDetail() {
     <div style={{ fontFamily: 'system-ui, Arial, sans-serif', background: '#f5f5f5', minHeight: '100vh', paddingBottom: 32 }}>
       <div style={{ background: '#fff', padding: '16px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
-          <button onClick={() => navigate('/')} style={backButtonStyle}>← Orqaga</button>
+          <button onClick={() => navigate('/')} style={backButtonStyle}>← Назад</button>
         </div>
       </div>
 
@@ -85,7 +85,7 @@ export default function ProductDetail() {
             
             {product.telegram_order_link && (
               <a href={product.telegram_order_link} target="_blank" rel="noreferrer" style={buyButtonStyle}>
-                Buyurtma berish
+                Заказать
               </a>
             )}
           </div>
@@ -100,7 +100,7 @@ const backButtonStyle = {
   border: 'none',
   fontSize: 16,
   fontWeight: 500,
-  color: '#10b981',
+  color: 'rgba(47, 88, 74, 1)',
   cursor: 'pointer',
   padding: '8px 0'
 }
@@ -110,7 +110,7 @@ const buyButtonStyle = {
   textAlign: 'center',
   padding: '14px',
   borderRadius: 8,
-  background: '#10b981',
+  background: 'rgba(47, 88, 74, 1)',
   color: '#fff',
   textDecoration: 'none',
   fontWeight: 600,

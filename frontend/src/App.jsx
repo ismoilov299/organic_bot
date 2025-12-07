@@ -62,7 +62,7 @@ function HomePage() {
           <div style={{ position: 'relative' }}>
             <input
               type="text"
-              placeholder="Mahsulotlarni qidirish"
+              placeholder="Искать товары"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -87,7 +87,7 @@ function HomePage() {
           onSelect={onSelectCategory}
         />
 
-        {loading && <p style={{ textAlign: 'center' }}>Yuklanmoqda...</p>}
+        {loading && <p style={{ textAlign: 'center' }}>Загрузка...</p>}
         {error && <p style={{ color: 'crimson', textAlign: 'center' }}>{error}</p>}
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
@@ -118,7 +118,7 @@ function btnStyle(active) {
     padding: '8px 16px',
     borderRadius: 20,
     border: 'none',
-    background: active ? '#10b981' : '#f3f4f6',
+    background: active ? 'rgba(47, 88, 74, 1)' : '#f3f4f6',
     color: active ? '#fff' : '#374151',
     cursor: 'pointer',
     fontWeight: 500,
@@ -173,7 +173,7 @@ function ProductCard({ product }) {
       <div style={{ padding: '0 12px 12px' }}>
         {product.telegram_order_link && (
           <a href={product.telegram_order_link} target="_blank" rel="noreferrer" style={buyStyle}>
-            Buyurtma berish
+            Заказать
           </a>
         )}
       </div>
@@ -185,7 +185,7 @@ const buyStyle = {
   textAlign: 'center',
   padding: '12px',
   borderRadius: 8,
-  background: '#10b981',
+  background: 'rgba(47, 88, 74, 1)',
   color: '#fff',
   textDecoration: 'none',
   fontWeight: 600,
