@@ -6,7 +6,7 @@ from aiogram.filters import Command
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 BOT_TOKEN = "8485668772:AAHtZ7AdlOZrV0cn9Ae5YdUWJP24f7SMf1k"
-API_URL = "http://127.0.0.1:8000/api"  # Production: https://organikbuyurtma.uz/api
+API_URL = "https://organikbuyurtma.uz/api"  # Local: http://127.0.0.1:8000/api
 
 logging.basicConfig(level=logging.INFO)
 
@@ -37,7 +37,6 @@ async def save_user_to_db(user: types.User):
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
-    # Foydalanuvchini bazaga saqlash
     await save_user_to_db(message.from_user)
     
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
