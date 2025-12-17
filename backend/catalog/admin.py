@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product
+from .models import Category, Product, TelegramUser
 
 
 @admin.register(Category)
@@ -28,6 +28,29 @@ class ProductAdmin(admin.ModelAdmin):
         }),
         ('Vaqt ma\'lumotlari', {
             'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+
+
+@admin.register(TelegramUser)
+class TelegramUserAdmin(admin.ModelAdmin):
+    """Telegram foydalanuvchilar admin panel"""
+    list_display = ['user_id', 'username', 'full_name', 'is_active', 'created_at', 'last_activity']
+    search_fields = ['user_id', 'username', 'first_name', 'last_name']
+    list_filter = ['is_active', 'created_at', 'last_activity']
+    readonly_fields = ['user_id', 'username', 'first_name', 'last_name', 'language_code', 'created_at', 'last_activity']
+    list_editable = ['is_active']
+    
+    fieldsets = (
+        ('Telegram ma\'lumotlari', {
+            'fields': ('user_id', 'username', 'first_name', 'last_name', 'language_code')
+        }),
+        ('Holat', {
+            'fields': ('is_active',)
+        }),
+        ('Vaqt ma\'lumotlari', {
+            'fields': ('created_at', 'last_activity'),
             'classes': ('collapse',)
         }),
     )

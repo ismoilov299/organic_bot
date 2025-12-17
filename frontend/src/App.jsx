@@ -335,7 +335,7 @@ function CartPage() {
   return (
     <div style={{ fontFamily: 'system-ui, Arial, sans-serif', background: '#f5f5f5', minHeight: '100vh', paddingBottom: 32 }}>
       <div style={{ background: '#fff', padding: '16px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'rgba(47, 88, 74, 1)', fontWeight: 500, fontSize: 16 }}>
             ← Orqaga
           </Link>
@@ -348,7 +348,7 @@ function CartPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 800, margin: '0 auto', padding: '16px' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '16px' }}>
         {cart.length === 0 ? (
           <div style={{ textAlign: 'center', padding: 48, background: '#fff', borderRadius: 16 }}>
             <div style={{ fontSize: 48, marginBottom: 16 }}>🛒</div>
@@ -359,7 +359,7 @@ function CartPage() {
           </div>
         ) : (
           <>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16, marginBottom: 16 }}>
               {cart.map(item => (
                 <CartItem key={item.id} item={item} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />
               ))}
@@ -401,15 +401,17 @@ function CartItem({ item, updateQuantity, removeFromCart }) {
     <div style={{ 
       background: '#fff', 
       borderRadius: 16, 
-      padding: 12,
+      padding: 16,
       display: 'flex',
+      flexDirection: 'column',
       gap: 12,
-      boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+      height: '100%'
     }}>
       {imgUrl ? (
-        <img src={imgUrl} alt={item.name} style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: 8 }} />
+        <img src={imgUrl} alt={item.name} style={{ width: '100%', height: 180, objectFit: 'cover', borderRadius: 8 }} />
       ) : (
-        <div style={{ width: 80, height: 80, background: '#f3f4f6', borderRadius: 8 }} />
+        <div style={{ width: '100%', height: 180, background: '#f3f4f6', borderRadius: 8 }} />
       )}
       
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 4 }}>

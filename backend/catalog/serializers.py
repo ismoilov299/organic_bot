@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.conf import settings
 from urllib.parse import quote
-from .models import Category, Product
+from .models import Category, Product, TelegramUser
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -56,3 +56,33 @@ class ProductSerializer(serializers.ModelSerializer):
             payload = quote(f"buy_{obj.id}")
             return f"https://t.me/{bot_username}?start={payload}"
         return None
+
+
+class TelegramUserSerializer(serializers.ModelSerializer):
+    """Telegram User serializer"""
+    full_name = serializers.CharField(read_only=True)
+    
+    class Meta:
+        model = TelegramUser
+        fields = [
+            'id',
+            'user_id',
+            'username',
+            'first_name',
+            'last_name',
+            'full_name',
+            'language_code',
+            'is_active',
+            'created_at',
+            'last_activity'
+        ]
+        read_only_fields = ['id', 'created_at', 'last_activity']
+    
+    def create(self, validated_data):
+        """Yangi foydalanuvchi yaratish yoki mavjudini yangilash"""
+        user_id = validated_data.get('user_id')
+        user, created = TelegramUser.objects.update_or_create(
+            user_id=user_id,
+            defaults=validated_data
+        )
+        return user
