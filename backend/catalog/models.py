@@ -37,6 +37,13 @@ class Product(models.Model):
         blank=True,
         null=True
     )
+    video_url = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        verbose_name="Video (YouTube link)",
+        help_text="YouTube video havolasi (masalan: https://www.youtube.com/watch?v=xxxxx)"
+    )
     is_available = models.BooleanField(
         default=True, 
         verbose_name="Mavjudligi"

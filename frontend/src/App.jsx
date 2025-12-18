@@ -244,6 +244,42 @@ function ProductCard({ product }) {
           ) : (
             <div style={{ width: '100%', height: 220, background: 'linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%)' }} />
           )}
+          {product.video_url && (
+            <a 
+              href={product.video_url} 
+              target="_blank" 
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                position: 'absolute',
+                top: 8,
+                right: 8,
+                width: 40,
+                height: 40,
+                borderRadius: '50%',
+                background: 'rgba(0, 0, 0, 0.7)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                border: '2px solid white',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 0, 0, 0.9)';
+                e.currentTarget.style.transform = 'scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.7)';
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </a>
+          )}
         </div>
         
         <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>

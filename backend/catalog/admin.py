@@ -23,8 +23,11 @@ class ProductAdmin(admin.ModelAdmin):
         ('Asosiy ma\'lumotlar', {
             'fields': ('name', 'category', 'price', 'is_available')
         }),
+        ('Media', {
+            'fields': ('image', 'video_url')
+        }),
         ('Batafsil', {
-            'fields': ('description', 'image')
+            'fields': ('description',)
         }),
         ('Vaqt ma\'lumotlari', {
             'fields': ('created_at', 'updated_at'),
