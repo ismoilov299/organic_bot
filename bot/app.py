@@ -1,12 +1,20 @@
 import asyncio
 import logging
 import aiohttp
+import os
+from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
 
-BOT_TOKEN = "8485668772:AAHtZ7AdlOZrV0cn9Ae5YdUWJP24f7SMf1k"
-API_URL = "https://organikbuyurtma.uz/api"  # Local: http://127.0.0.1:8000/api
+# .env faylini yuklash
+load_dotenv()
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000/api")
+
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN environment variable not set!")
 
 logging.basicConfig(level=logging.INFO)
 
@@ -43,7 +51,7 @@ async def cmd_start(message: types.Message):
         [
             InlineKeyboardButton(
                 text="🛒 Buyurtma berish",
-                url="https://organikbuyurtma.uz"
+                web_app=WebAppInfo(url="https://organikbuyurtma.uz")
             )
         ]
     ])
